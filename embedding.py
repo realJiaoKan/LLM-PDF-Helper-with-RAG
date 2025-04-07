@@ -1,18 +1,9 @@
+from settings import *
 from tqdm import tqdm
 from langchain_community.document_loaders import PyPDFLoader
 from langchain.text_splitter import CharacterTextSplitter
 from pymilvus import MilvusClient
 from langchain_huggingface import HuggingFaceEmbeddings
-
-# --- Configuration ---
-PDF_FILE = "WinRAR.pdf"
-DB_FILE_PATH = "milvus_db.db"
-COLLECTION_NAME = "WinRAR"
-
-EMBED_MODEL_NAME = "intfloat/e5-large-v2"
-EMBED_DIM = 1024
-
-# --- Create Milvus Client and Collection ---
 
 
 def create_milvus_collection():

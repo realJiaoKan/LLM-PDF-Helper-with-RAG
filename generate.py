@@ -1,19 +1,8 @@
-import os
+from settings import *
 from pymilvus import MilvusClient
 from langchain_huggingface import HuggingFaceEmbeddings
 import openai
 
-# --- Configuration ---
-DB_FILE_PATH = "milvus_db.db"
-COLLECTION_NAME = "WinRAR"
-
-EMBED_MODEL_NAME = "intfloat/e5-large-v2"
-EMBED_DIM = 1024
-
-OPENAI_MODEL = "gpt-3.5-turbo"
-openai.api_key = os.environ["OPENAI_API_KEY"]
-
-# --- Prompt Template ---
 prompt_template = (
     "You are a helpful assistant.\n"
     "Based on the question from the user, I have prepared some context that may be related to the question, "
