@@ -1,0 +1,12 @@
+pymilvus
+langchain>=0.0.287
+langchain-community
+openai
+transformers
+accelerate
+pydantic==1.10.11
+tiktoken
+pycryptodomex
+sentence-transformers
+pypdf
+langchain-huggingface
