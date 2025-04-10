@@ -81,5 +81,5 @@ class Embedder:
 
 if __name__ == "__main__":
     embedder = Embedder(embed_model_name=DEFAULT_EMBED_MODEL_NAME,
-                        df_file=DEFAULT_PDF_FILE)
+                        pdf_file=DEFAULT_PDF_FILE)
     embedder.embed()

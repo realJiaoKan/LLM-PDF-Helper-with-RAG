@@ -18,7 +18,7 @@ class Generator:
             "which is given below:\n"
             "{}\n\n"
             "And here is the question: {}\n\n"
-            "Please provide a useful answer."
+            "Please provide a useful and accurate answer."
         )
 
     def milvus_search(self, query: str, top_k: int = 5):
@@ -92,4 +92,4 @@ class Generator:
 if __name__ == "__main__":
     generator = Generator(openai_model=DEFAULT_OPENAI_MODEL,
                           embed_model_name=DEFAULT_EMBED_MODEL_NAME)
-    generator.generate(input("Enter your question about WinRAR: "))
+    generator.generate(input("Enter your question about the PDF content: "))

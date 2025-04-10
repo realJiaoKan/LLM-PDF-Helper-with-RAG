@@ -1,16 +1,18 @@
-# Smart WinRAR Helper with RAG
+# LLM PDF Helper with RAG
 
-Smart WinRAR Helper with RAG is a tool designed to enhance your file compression and extraction experience with WinRAR using advanced Retrieval-Augmented Generation (RAG) techniques.
+LLM PDF Helper with RAG is a tool designed to enhance your interaction with PDF documents using advanced Retrieval-Augmented Generation (RAG) techniques powered by large language models (LLMs).
+
+The files `WinRAR.pdf` (converted from `WinRAR.chm`) are included solely for testing purposes. They serve as example documents to demonstrate the functionality of the tool. These files are not required for the general use of the application and can be replaced with your own PDF or CHM files for embedding and querying.
 
 ## Installation
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/realJiaoKan/Smart-WinRAR-Helper-with-RAG
+    git clone https://github.com/realJiaoKan/LLM-PDF-Helper-with-RAG
     ```
 2. Navigate to the project directory:
     ```bash
-    cd Smart-WinRAR-Helper-with-RAG
+    cd LLM-PDF-Helper-with-RAG
     ```
 3. Install dependencies:
     ```bash
@@ -19,14 +21,24 @@ Smart WinRAR Helper with RAG is a tool designed to enhance your file compression
 
 ## Usage
 
-To run the application, first do the embedding:
+### Embedding Documents
+To prepare the document embeddings:
 ```bash
-python embedding.py
+python embedder.py
 ```
-Then run do the generation:
+
+### Generating Answers
+To generate answers based on user queries:
 ```bash
-python generate.py
+python generator.py
 ```
+
+### Gradio Demo Interface
+You can also use the Gradio-based web interface for embedding and generating answers interactively:
+```bash
+python demo.py
+```
+This will launch a web interface where you can upload PDF files, select models, and ask questions.
 
 ## License
 

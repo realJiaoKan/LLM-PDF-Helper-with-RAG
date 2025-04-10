@@ -10,3 +10,4 @@ pycryptodomex
 sentence-transformers
 pypdf
 langchain-huggingface
+gradio
