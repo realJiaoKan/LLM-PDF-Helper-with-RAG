@@ -40,6 +40,18 @@ python demo.py
 ```
 This will launch a web interface where you can upload PDF files, select models, and ask questions.
 
+### Modifying `settings.py`
+
+To customize the behavior of the tool, you can modify the `settings.py` file. This file contains configuration options, including the embedding model. For example adding a new sentence embedding model:
+
+1. Open the `settings.py` file in a text editor.
+
+2. Go find some model you like on Hugging Face, maybe you will like this: [Embedding Leaderboard](https://huggingface.co/spaces/mteb/leaderboard)
+
+3. Add the path to your model in 'EMBED_MODEL_OPTIONS' and its dimension in 'EMBED_MODEL_OPTIONS_DIM'.
+
+4. Enjoy!
+
 ## License
 
 This project is licensed under the [MIT License](LICENSE).

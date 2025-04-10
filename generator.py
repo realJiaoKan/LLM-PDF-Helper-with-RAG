@@ -5,7 +5,7 @@ import openai
 
 
 class Generator:
-    def __init__(self, openai_model, embed_model_name, temerature=0.0,
+    def __init__(self, openai_model, embed_model_name, temerature,
                  db_file_path=DEFAULT_DB_FILE_PATH, collection_name=DEFAULT_COLLECTION_NAME):
         self.openai_model = openai_model
         self.embed_model_name = embed_model_name
@@ -91,5 +91,6 @@ class Generator:
 
 if __name__ == "__main__":
     generator = Generator(openai_model=DEFAULT_OPENAI_MODEL,
-                          embed_model_name=DEFAULT_EMBED_MODEL_NAME)
+                          embed_model_name=DEFAULT_EMBED_MODEL_NAME,
+                          temerature=DEFAULT_TEMPERATURE)
     generator.generate(input("Enter your question about the PDF content: "))

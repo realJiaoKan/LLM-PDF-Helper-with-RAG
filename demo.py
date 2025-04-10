@@ -6,18 +6,31 @@ from generator import Generator
 
 
 def embed(embed_model_name, pdf_file):
-    yield gr.update(value="Embedding...", interactive=False), gr.update(interactive=False)
-    embedder = Embedder(embed_model_name, pdf_file.name)
-    embedder.embed()
-    yield gr.update(value="Embed!", interactive=True), gr.update(interactive=True)
-    return "Embed!"
+    if not pdf_file:
+        yield gr.update(value="No PDF uploaded! Please try again.", interactive=True), gr.update(interactive=True)
+        return
+
+    try:
+        yield gr.update(value="Embedding...", interactive=False), gr.update(interactive=False)
+        embedder = Embedder(embed_model_name, pdf_file.name)
+        embedder.embed()
+        yield gr.update(value="Embed!", interactive=True), gr.update(interactive=True)
+    except Exception as e:
+        print(f"Error during embedding: {e}")
+        yield gr.update(value="Error occurred! Please try again.", interactive=True), gr.update(interactive=True)
+
+    return
 
 
 def generate(openai_model_name, embed_model_name, temperature, user_query):
-    generator = Generator(openai_model_name, embed_model_name, temperature)
-    top_docs, prompt, answer = generator.generate(user_query)
-    table_data = [[doc["score"], doc["text"]] for doc in top_docs]
-    return answer, table_data
+    try:
+        generator = Generator(openai_model_name, embed_model_name, temperature)
+        top_docs, prompt, answer = generator.generate(user_query)
+        table_data = [[doc["score"], doc["text"]] for doc in top_docs]
+        return answer, table_data
+    except Exception as e:
+        print(f"Error during generation: {e}")
+        return "An error occurred during generation. Please try again.", []
 
 
 with gr.Blocks() as demo:
@@ -44,12 +57,13 @@ with gr.Blocks() as demo:
             )
         with gr.Column():
             user_query = gr.Textbox(label="Enter your query")
+            submit_button = gr.Button("Generate")
             output_box = gr.Textbox(label="Answer")
             top_docs_table = gr.Dataframe(
                 headers=["Score", "Doc Found"],
-                label="Top Docs"
+                label="Top Docs",
+                wrap=True
             )
-            submit_button = gr.Button("Generate")
 
     embed_button.click(
         embed,
@@ -68,4 +82,5 @@ with gr.Blocks() as demo:
         outputs=[output_box, top_docs_table]
     )
 
+demo.queue()
 demo.launch()
